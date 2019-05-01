@@ -9,7 +9,6 @@
           <app-pagination/>
         </b-col>
         <b-col sm="4" class="col-right">
-          
           <app-profile/>
         </b-col>
       </b-row>

@@ -7,8 +7,8 @@ Vue.use(Vuex, Axios)
 export const store = new Vuex.Store({
   state: {
     items: [],
-    title: 'Member Information',
-    title_detail: "Profile",
+    title: 'MEMBER INFORMATION',
+    title_detail: "PROFILE",
     options: [
           { value: 3, text: 3 },
           { value: 5, text: 5 },
@@ -18,7 +18,10 @@ export const store = new Vuex.Store({
     perPage: 3,
     currentPage: 1,
     selectMode: 'single',
-    profileData: []
+    profileData: [],
+    dataTemp: [],
+    checkEdit: false,
+    disableEdit: false
   },
   actions: {
     loadApi({commit}) {
@@ -41,12 +44,11 @@ export const store = new Vuex.Store({
     	commit('updateFirstname')
     },
     updateProfile({commit}, value) {
-    
     	commit('updateProfile', value)
-    	
+    },
+    updateCheckedit({commit}) {
+      commit('updateCheckedit')
     }
-
-
   },
   mutations: {
   	// import data
@@ -66,13 +68,33 @@ export const store = new Vuex.Store({
     	state.items[0].first_name = "VanDeo"
     },
     updateProfile(state, value) {
-    	state.profileData = value
+    	state.profileData = value;
+      if(state.checkEdit === true) {
+        state.checkEdit = false
+      }
+      if(state.disableEdit === true) {
+        state.disableEdit = false
+      }
+    },
+    // update checkEdit
+    updateCheckedit(state) {
+      if(state.checkEdit === false) {
+        state.checkEdit = true
+        state.disableEdit = true
+      } else {
+        state.checkEdit = false
+        state.disableEdit = false
+      }
     }
   },
   getters: {
   	// get length of items
   	getItemlength: state => {
   		return state.items.length
-  	}
+  	},
+    // get checkEdit
+    getCheckedit: state => {
+      return state.checkEdit
+    }
   }
 })

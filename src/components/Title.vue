@@ -1,7 +1,12 @@
 <template>
 	<div>
-		<h2>{{title}}</h2>
-		<hr>
+		<b-row class="justify-content-md-center">
+			<b-col>
+				<h3>{{title}}</h3>
+				<hr>
+			</b-col>
+		</b-row>
+		
 	</div>
 	
 </template>

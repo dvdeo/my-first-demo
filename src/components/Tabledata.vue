@@ -2,6 +2,7 @@
 	<div>
 		<b-table
 	         id="my-table"
+	         :busy="isBusy"
 	         responsive
 	         small
 	         outlined
@@ -18,7 +19,7 @@
              @row-selected="updateProfile"
              >
                <template slot="avatar" slot-scope="data">
-                 <b-img thumbnail  :src="`${data.value}`"></b-img>
+                 <b-img thumbnail rounded="circle" :src="`${data.value}`"></b-img>
 
               </template>
      	</b-table>
@@ -32,11 +33,12 @@ export default {
 	data () {
 		return {
 			fields: [
-	        {key: 'id', label: "#", sortable: true },
+	        {key: 'id', label: "ID", sortable: true },
 	        {key: 'avatar', label: "Avatar" },
 	        {key: 'first_name', label: "First name" },
 	        {key: 'last_name', label: "Last name" },
-      		]
+      		],
+      		isBusy: false
       		
 		}
 	},
@@ -59,5 +61,7 @@ export default {
 </script>
 
 <style>
-
+#my-table th{
+	color: #008080;
+}
 </style>

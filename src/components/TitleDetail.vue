@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>{{title_detail}}</h2>
+		<h3>{{title_detail}}</h3>
 		<hr>
 	</div>
 	
@@ -14,7 +14,7 @@ export default {
 			'title_detail'
 		])
 	}
-}
+};
 
 </script>
 
